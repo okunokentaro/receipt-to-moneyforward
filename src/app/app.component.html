@@ -1,3 +1,91 @@
-<h1>
-  {{title}}
-</h1>
+<div class="r-main">
+  <div class="ui grid">
+    <div class="row">
+      <div class="sixteen wide column">
+        <h1>{{title}}</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="sixteen wide column">
+        <button class="ui button" (click)="onClickNew()">新規作成</button>
+      </div>
+    </div>
+
+    <ng-container *ngFor="let receipt of receipts; let receiptIndex = index">
+      <div class="row">
+        <div class="sixteen wide column">
+          <form class="ui form">
+            <div class="fields">
+              <div class="four wide field">
+                <label>日付</label>
+                <input type="date" name="date" [(ngModel)]="receipt.date" placeholder="日付" useValueAsDate>
+              </div>
+              <div class="four wide field">
+                <label>場所</label>
+                <input type="text" name="place" [(ngModel)]="receipt.place" placeholder="場所">
+              </div>
+              <div class="four wide field">
+                <label>支出元</label>
+                <input type="text" name="account" [(ngModel)]="receipt.account" placeholder="支出元">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="sixteen wide column">
+          <div class="ui grid">
+            <div class="row">
+              <div class="one wide column"></div>
+              <div class="fifteen wide column">
+                <div class="ui grid">
+                  <div class="row">
+                    <div class="four wide column">金額</div>
+                    <div class="four wide column">大項目</div>
+                    <div class="four wide column">中項目</div>
+                    <div class="four wide column">内容</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" *ngFor="let transaction of receipt.transactions;">
+              <div class="one wide column">
+                <button class="ui icon circular button" (click)="onClickAddTransaction(receiptIndex)">
+                  <i class="plus icon"></i>
+                </button>
+              </div>
+              <div class="fifteen wide column">
+                <form class="ui form">
+                  <div class="fields">
+                    <div class="four wide field">
+                      <input type="number" name="account" [(ngModel)]="dummy" placeholder="金額">
+                    </div>
+                    <div class="four wide field">
+                      <select name="gender" class="ui dropdown">
+                        <option value="">Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
+                    </div>
+                    <div class="four wide field">
+                      <select name="" id="" class="ui selection dropdown">
+                        <option value="">State</option>
+                      </select>
+                    </div>
+                    <div class="four wide field">
+                      <input type="text" name="account" [(ngModel)]="dummy" placeholder="内容">
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui section divider"></div>
+    </ng-container>
+  </div>
+</div>
