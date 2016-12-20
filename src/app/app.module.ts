@@ -7,14 +7,18 @@ import {HttpModule} from '@angular/http'
 import {DateValueAccessorModule} from 'angular-date-value-accessor'
 
 import {AppComponent} from './app.component'
-import {ReceiptsService} from './receipts.service'
+import {ReceiptsService} from './receipts.service';
+import {ConfigComponent} from './config/config.component'
+import {InputComponent} from './input/input.component'
 
 (<any>window).jQuery = jQuery
 require('../semantic.js')
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ConfigComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,
