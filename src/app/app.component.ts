@@ -1,5 +1,5 @@
 import * as jQuery from 'jquery'
-import {Component} from '@angular/core'
+import {Component, OnDestroy} from '@angular/core'
 import {ReceiptsService} from './receipts.service'
 import {Subscription} from 'rxjs'
 
@@ -12,7 +12,7 @@ const rerenderDropdown = () => {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   subscriptions = [] as Subscription[]
 
   constructor(public receiptsService: ReceiptsService) {
