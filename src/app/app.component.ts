@@ -1,6 +1,7 @@
 import * as jQuery from 'jquery'
 import {Component} from '@angular/core'
 import {ReceiptsService} from './receipts.service'
+import {Subscription} from 'rxjs'
 
 const rerenderDropdown = () => {
   requestAnimationFrame(() => (<any>jQuery('.ui.dropdown')).dropdown())
@@ -12,18 +13,24 @@ const rerenderDropdown = () => {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Receipt to Money Forward'
+  subscriptions = [] as Subscription[]
 
-  constructor(public receiptsService: ReceiptsService) {}
+  constructor(public receiptsService: ReceiptsService) {
+    this.subscriptions.push(this.receiptsService.changed.subscribe(() => {
+      rerenderDropdown()
+    }))
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach((s) => s.unsubscribe())
+  }
 
   onClickNew() {
     this.receiptsService.newReceipt()
-    rerenderDropdown()
   }
 
   onClickAddTransaction(receiptIndex: number) {
     this.receiptsService.addTransaction(receiptIndex)
-    rerenderDropdown()
   }
 
   get receipts() {
