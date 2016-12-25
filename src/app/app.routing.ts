@@ -1,6 +1,7 @@
 import {Routes, RouterModule} from '@angular/router'
 import {InputComponent} from './input/input.component'
 import {ConfigComponent} from './config/config.component'
+import {CONFIG_PATH} from './constants'
 
 const appRoutes: Routes = [
   {
@@ -8,7 +9,7 @@ const appRoutes: Routes = [
     component: InputComponent
   },
   {
-    path     : 'config',
+    path     : CONFIG_PATH,
     component: ConfigComponent,
   },
   {

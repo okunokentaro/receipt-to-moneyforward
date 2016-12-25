@@ -1,3 +1,85 @@
-<p>
-  config works!
-</p>
+<div class="ui grid">
+  <div class="row">
+    <div class="sixteen wide column">
+      <button
+        class="ui button primary"
+        (click)="onClickDone()"
+      >完了</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="sixteen wide column">
+      <h2 class="ui header">大項目・中項目</h2>
+      <button
+        class="ui button"
+        (click)="onClickAddLargeCategory()"
+      >大項目を追加</button>
+    </div>
+  </div>
+
+  <div class="row" *ngFor="let largeCategory of largeCategories; let lCatIndex = index">
+    <div class="sixteen wide column">
+      <div class="ui grid">
+        <div class="row">
+          <div class="sixteen wide column">
+            <form class="ui form">
+              <div class="fields">
+                <div class="four wide field">
+                  <label>大項目名</label>
+                  <input
+                    type="text"
+                    name="largeCategoryName"
+                    placeholder="大項目名"
+                    [ngModel]="largeCategory.name"
+                    (ngModelChange)="setLargeCategoryName(lCatIndex, $event)"
+                  >
+                </div>
+                <div class="four wide field">
+                  <label>中項目名</label>
+                  <input
+                    type="text"
+                    name="middleCategoryName"
+                    placeholder="中項目名"
+                    [ngModel]="largeCategory.middleCategories[0].name"
+                    (ngModelChange)="setMiddleCategoryName(lCatIndex, 0, $event)"
+                  >
+                </div>
+                <div class="four wide field">
+                  <button
+                    class="ui button"
+                    (click)="onClickAddMiddleCategory(lCatIndex)"
+                  >中項目を追加</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- index は2件目からのループのため常に +1 して使う -->
+        <div class="row" *ngFor="let middleCategory of getMiddleCategories(lCatIndex); let mCatIndex = index">
+          <div class="sixteen wide column">
+            <form class="ui form">
+              <div class="fields">
+                <div class="four wide field">
+                  <!--blank-->
+                </div>
+                <div class="four wide field">
+                  <label>中項目名</label>
+                  <input
+                    type="text"
+                    name="middleCategoryName"
+                    placeholder="中項目名"
+                    [ngModel]="largeCategory.middleCategories[mCatIndex + 1].name"
+                    (ngModelChange)="setMiddleCategoryName(lCatIndex, mCatIndex + 1, $event)"
+                  >
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

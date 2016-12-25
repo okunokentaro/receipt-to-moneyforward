@@ -1,3 +1,151 @@
-<p>
-  input works!
-</p>
+<div class="ui grid">
+  <div class="row">
+    <div class="sixteen wide column">
+      <button class="ui button" (click)="onClickNew()">新規作成</button>
+      <button class="ui button" (click)="onClickExportCsv()">csv出力</button>
+      <button class="ui button" (click)="onClickConfig()">設定</button>
+    </div>
+  </div>
+
+  <ng-container *ngFor="let receipt of receipts; let receiptIndex = index">
+    <div class="row">
+      <div class="sixteen wide column">
+        <form class="ui form">
+          <div class="fields">
+            <div class="four wide field">
+              <label>日付</label>
+              <input
+                type="date"
+                name="date"
+                placeholder="日付"
+                useValueAsDate
+                [(ngModel)]="receipt.date"
+              >
+            </div>
+            <div class="four wide field">
+              <label>場所</label>
+              <input
+                type="text"
+                name="place"
+                placeholder="場所"
+                [(ngModel)]="receipt.place"
+              >
+            </div>
+            <div class="four wide field">
+              <label>支出元</label>
+              <input
+                type="text"
+                name="account"
+                placeholder="支出元"
+                [(ngModel)]="receipt.account"
+              >
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="sixteen wide column">
+        <form class="ui form">
+          <div class="fields">
+            <div class="one wide field"></div>
+            <div class="three wide field">大項目</div>
+            <div class="three wide field">中項目</div>
+            <div class="six wide field">内容</div>
+            <div class="two wide field">金額</div>
+            <div class="one wide field">税込</div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row" *ngFor="let transaction of receipt.transactions;">
+      <div class="sixteen wide column">
+        <form class="ui form">
+          <div class="fields">
+            <div class="one wide field">
+              <button class="ui icon circular button" (click)="onClickAddTransaction(receiptIndex)">
+                <i class="plus icon"></i>
+              </button>
+            </div>
+            <div class="three wide field">
+              <select
+                class="ui dropdown"
+                name="largeCategory"
+                placeholder="大項目"
+                [(ngModel)]="transaction.lCatIndex"
+              >
+                <option value="">大項目</option>
+                <option
+                  *ngFor="let largeCategory of largeCategories; let i = index"
+                  [attr.value]="i"
+                >{{largeCategory}}</option>
+              </select>
+            </div>
+            <div class="three wide field">
+              <select
+                class="ui dropdown"
+                name="middleCategory"
+                placeholder="中項目"
+                [(ngModel)]="transaction.mCatIndex"
+              >
+                <option value="">中項目</option>
+                <option
+                  *ngFor="let middleCategory of getMiddleCategories(transaction.lCatIndex); let i = index"
+                  [attr.value]="i"
+                >{{middleCategory}}</option>
+              </select>
+            </div>
+            <div class="six wide field">
+              <input
+                type="text"
+                name="content"
+                placeholder="内容"
+                [(ngModel)]="transaction.content"
+              >
+            </div>
+            <div class="two wide field">
+              <input
+                type="number"
+                name="amount"
+                placeholder="金額"
+                [(ngModel)]="transaction.amount"
+              >
+            </div>
+            <div class="one wide field">
+            <div class="ui checkbox">
+              <input
+                type="checkbox"
+                name="taxIncluded"
+                placeholder="税込"
+                [(ngModel)]="transaction.isTaxIncluded"
+              >
+            </div>
+          </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="sixteen wide column">
+        <form class="ui form">
+          <div class="fields">
+            <div class="four wide field">
+              <label>レシート上の合計金額</label>
+              <input
+                type="number"
+                name="total"
+                placeholder="レシート上の合計金額"
+                [(ngModel)]="receipt.total"
+              >
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="ui section divider"></div>
+  </ng-container>
+</div>
