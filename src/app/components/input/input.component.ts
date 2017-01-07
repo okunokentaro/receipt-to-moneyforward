@@ -3,9 +3,9 @@ import {Component, OnInit, OnDestroy} from '@angular/core'
 import {Router} from '@angular/router'
 import {Subscription} from 'rxjs'
 
-import {CONFIG_PATH} from '../constants'
-import {ReceiptsService, Receipt} from '../receipts.service'
-import {ConfigService} from '../config.service'
+import {CONFIG_PATH} from '../../constants'
+import {ReceiptsService, Receipt} from '../../services/receipts.service'
+import {ConfigService} from '../../services/config.service'
 
 const rerenderDropdown = () => {
   requestAnimationFrame(() => (<any>jQuery('.ui.dropdown')).dropdown())

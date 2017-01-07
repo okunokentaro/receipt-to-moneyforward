@@ -3,6 +3,8 @@ import {calcTotalIncludingTax} from './calc-total-including-tax'
 
 const fixtureWithoutTax = {
   date: new Date(),
+  place: 'place',
+  account: 'account',
   transactions: [
     {amount: 138, lCatIndex: 0, mCatIndex: 0, content: '', isTaxIncluded: false},
     {amount: 135, lCatIndex: 0, mCatIndex: 0, content: '', isTaxIncluded: false},
@@ -16,6 +18,8 @@ const fixtureWithoutTax = {
 
 const fixtureIncludingTax = {
   date: new Date(),
+  place: 'place',
+  account: 'account',
   transactions: [
     {amount: 100, lCatIndex: 0, mCatIndex: 0, content: '', isTaxIncluded: true},
     {amount: 200, lCatIndex: 0, mCatIndex: 0, content: '', isTaxIncluded: true},
@@ -26,6 +30,8 @@ const fixtureIncludingTax = {
 
 const fixtureMixTax = {
   date: new Date(),
+  place: 'place',
+  account: 'account',
   transactions: [
     {amount: 100, lCatIndex: 0, mCatIndex: 0, content: '', isTaxIncluded: true},
     {amount: 200, lCatIndex: 0, mCatIndex: 0, content: '', isTaxIncluded: true},

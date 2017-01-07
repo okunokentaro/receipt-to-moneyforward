@@ -1,6 +1,6 @@
 import {Routes, RouterModule} from '@angular/router'
-import {InputComponent} from './input/input.component'
-import {ConfigComponent} from './config/config.component'
+import {InputComponent} from './components/input/input.component'
+import {ConfigComponent} from './components/config/config.component'
 import {CONFIG_PATH} from './constants'
 
 const appRoutes: Routes = [
