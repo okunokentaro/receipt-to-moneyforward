@@ -47,7 +47,7 @@ export class InputComponent implements OnInit, OnDestroy {
   }
 
   onClickConfig() {
-    this.router.navigate([CONFIG_PATH]);
+    this.router.navigate([CONFIG_PATH])
   }
 
   onClickAddTransaction(receiptIndex: number) {

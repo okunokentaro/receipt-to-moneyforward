@@ -16,7 +16,7 @@ export class ConfigComponent implements OnInit {
   }
 
   onClickDone() {
-    this.router.navigate(['']);
+    this.router.navigate([''])
   }
 
   onClickAddLargeCategory() {

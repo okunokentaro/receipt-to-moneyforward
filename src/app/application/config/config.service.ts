@@ -84,6 +84,6 @@ export class ConfigService {
         version: 1
       }
     })
-    this.localStorage.setItem(CONFIG_KEY, json);
+    this.localStorage.setItem(CONFIG_KEY, json)
   }
 }
