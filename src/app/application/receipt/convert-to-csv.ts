@@ -1,7 +1,7 @@
 import * as Papa from 'papaparse'
 
-import {Receipt} from '../services/receipts.service'
-import {LargeCategory} from '../services/config.service'
+import {Receipt} from './receipts.service'
+import {LargeCategory} from '../config/config.service'
 const leftpad = require('left-pad')
 
 const getMfDate = (date: Date) => {
