@@ -6,8 +6,8 @@ import {FormsModule} from '@angular/forms'
 import {RouterTestingModule} from '@angular/router/testing'
 
 import {InputComponent} from './input.component'
-import {ReceiptsService} from '../../services/receipts.service'
-import {ConfigService} from '../../services/config.service'
+import {ReceiptsService} from '../../application/receipt/receipts.service'
+import {ConfigService} from '../../application/config/config.service'
 
 describe('InputComponent', () => {
   let component: InputComponent

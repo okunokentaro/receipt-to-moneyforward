@@ -6,7 +6,7 @@ import {FormsModule} from '@angular/forms'
 import {RouterTestingModule} from '@angular/router/testing'
 
 import {ConfigComponent} from './config.component'
-import {ConfigService} from '../../services/config.service'
+import {ConfigService} from '../../application/config/config.service'
 
 describe('ConfigComponent', () => {
   let component: ConfigComponent

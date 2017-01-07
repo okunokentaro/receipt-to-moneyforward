@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core'
 import {Subject} from 'rxjs'
 
-import {TAX_RATE} from '../constants'
-import {calcTotalIncludingTax} from '../utils/calc-total-including-tax'
-import {convertToCsv} from '../utils/convert-to-csv'
-import {ConfigService} from './config.service'
+import {TAX_RATE} from '../../constants'
+import {calcTotalIncludingTax} from '../../utils/calc-total-including-tax'
+import {convertToCsv} from '../../utils/convert-to-csv'
+import {ConfigService} from '../config/config.service'
 
 export type Transaction = {
   lCatIndex: number,

@@ -2,7 +2,7 @@
 
 import {TestBed, async, inject} from '@angular/core/testing'
 import {ReceiptsService} from './receipts.service'
-import {ConfigService} from './config.service'
+import {ConfigService} from '../config/config.service'
 
 describe('ReceiptsService', () => {
   beforeEach(() => {

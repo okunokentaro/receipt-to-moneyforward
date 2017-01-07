@@ -12,8 +12,8 @@ import {InputComponent} from './components/input/input.component'
 
 import {ROUTING} from './app.routing'
 
-import {ReceiptsService} from './services/receipts.service'
-import {ConfigService} from './services/config.service'
+import {ReceiptsService} from './application/receipt/receipts.service'
+import {ConfigService} from './application/config/config.service'
 
 (<any>window).jQuery = jQuery
 require('../semantic.js')
