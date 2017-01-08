@@ -1,4 +1,4 @@
-import {Receipt} from './receipts.service'
+import {Receipt} from '../../domain/receipt/receipt'
 
 export const calcTotalIncludingTax = (receipt: Receipt, taxRate: number): Receipt => {
   const transactionsIncludingTax = receipt.transactions.reduce((acc, transaction) => {

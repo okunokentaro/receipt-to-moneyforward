@@ -1,6 +1,6 @@
 import * as Papa from 'papaparse'
 
-import {Receipt} from './receipts.service'
+import {Receipt} from '../../domain/receipt/receipt'
 import {LargeCategory} from '../config/config.service'
 const leftpad = require('left-pad')
 
