@@ -1,45 +1,44 @@
 /* tslint:disable:no-unused-variable */
 import {calcTotalIncludingTax} from './calc-total-including-tax'
 
-const fixtureWithoutTax = {
+const fixtureDefault = {
   date: new Date(),
   place: 'place',
   account: 'account',
+}
+
+const base = {lCatIndex: 0, mCatIndex: 0, content: ''}
+
+const fixtureWithoutTax = Object.assign({
   transactions: [
-    {amount: 138, lCatIndex: 0, mCatIndex: 0, content: '', isTaxIncluded: false},
-    {amount: 135, lCatIndex: 0, mCatIndex: 0, content: '', isTaxIncluded: false},
-    {amount: 398, lCatIndex: 0, mCatIndex: 0, content: '', isTaxIncluded: false},
-    {amount: 199, lCatIndex: 0, mCatIndex: 0, content: '', isTaxIncluded: false},
-    {amount: 258, lCatIndex: 0, mCatIndex: 0, content: '', isTaxIncluded: false},
-    {amount: 298, lCatIndex: 0, mCatIndex: 0, content: '', isTaxIncluded: false},
+    Object.assign({amount: 138, isTaxIncluded: false}, base),
+    Object.assign({amount: 135, isTaxIncluded: false}, base),
+    Object.assign({amount: 398, isTaxIncluded: false}, base),
+    Object.assign({amount: 199, isTaxIncluded: false}, base),
+    Object.assign({amount: 258, isTaxIncluded: false}, base),
+    Object.assign({amount: 298, isTaxIncluded: false}, base),
   ],
   total: 1540
-}
+}, fixtureDefault)
 
-const fixtureIncludingTax = {
-  date: new Date(),
-  place: 'place',
-  account: 'account',
+const fixtureIncludingTax = Object.assign({
   transactions: [
-    {amount: 100, lCatIndex: 0, mCatIndex: 0, content: '', isTaxIncluded: true},
-    {amount: 200, lCatIndex: 0, mCatIndex: 0, content: '', isTaxIncluded: true},
-    {amount: 300, lCatIndex: 0, mCatIndex: 0, content: '', isTaxIncluded: true},
+    Object.assign({amount: 100, isTaxIncluded: true}, base),
+    Object.assign({amount: 200, isTaxIncluded: true}, base),
+    Object.assign({amount: 300, isTaxIncluded: true}, base),
   ],
   total: 600
-}
+}, fixtureDefault)
 
-const fixtureMixTax = {
-  date: new Date(),
-  place: 'place',
-  account: 'account',
+const fixtureMixTax = Object.assign({
   transactions: [
-    {amount: 100, lCatIndex: 0, mCatIndex: 0, content: '', isTaxIncluded: true},
-    {amount: 200, lCatIndex: 0, mCatIndex: 0, content: '', isTaxIncluded: true},
-    {amount: 300, lCatIndex: 0, mCatIndex: 0, content: '', isTaxIncluded: true},
-    {amount: 101, lCatIndex: 0, mCatIndex: 0, content: '', isTaxIncluded: false},
+    Object.assign({amount: 100, isTaxIncluded: true},  base),
+    Object.assign({amount: 200, isTaxIncluded: true},  base),
+    Object.assign({amount: 300, isTaxIncluded: true},  base),
+    Object.assign({amount: 101, isTaxIncluded: false}, base),
   ],
   total: 709
-}
+}, fixtureDefault)
 
 const taxRate = 1.08
 
