@@ -1,51 +1,37 @@
 import {Injectable} from '@angular/core'
 import {Subject} from 'rxjs'
 
-import {TAX_RATE} from '../../constants'
-import {calcTotalIncludingTax} from './calc-total-including-tax'
 import {convertToCsv} from './convert-to-csv'
 import {ConfigService} from '../config/config.service'
-import {Receipt} from '../../domain/receipt/receipt'
-import {uuidGen} from "../../uuid-gen";
+
+import {Receipts} from '../../domain/receipt/receipts'
 
 @Injectable()
 export class ReceiptsService {
-  items: Receipt[]
+  items: Receipts
   changed = new Subject()
 
   constructor(private configService: ConfigService) {
-    this.items = []
+    this.items = new Receipts([])
   }
 
   newReceipt() {
-    this.items.push(new Receipt())
+    this.items.newReceipt()
     this.changed.next()
   }
 
-  addTransaction(idx: number) {
-    const lastIndex       = this.items[idx].transactions.length - 1
-    const lastTransaction = this.items[idx].transactions[lastIndex]
-
-    const newTransaction   = Object.assign({}, lastTransaction)
-    newTransaction.uuid    = uuidGen()
-    newTransaction.content = ''
-    newTransaction.amount  = 0
-    this.items[idx].transactions.push(newTransaction)
-
+  addTransaction(receiptUuid: string) {
+    this.items.addTransaction(receiptUuid)
     this.changed.next()
   }
 
-  removeTransaction(idx: number, transactionUuid: string) {
-    const receipt = this.items[idx]
-    receipt.removeTransaction(transactionUuid)
-
+  removeTransaction(receiptUuid: string, transactionUuid: string) {
+    this.items.removeTransaction(receiptUuid, transactionUuid)
     this.changed.next()
   }
 
   convertToCsv(): string {
-    const receiptsFixed = this.items.map((item) => {
-      return calcTotalIncludingTax(item, TAX_RATE)
-    })
+    const receiptsFixed = this.items.getReceiptsFixed()
     return convertToCsv(
       receiptsFixed,
       this.configService.largeCategories

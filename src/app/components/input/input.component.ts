@@ -53,14 +53,14 @@ export class InputComponent implements OnInit, OnDestroy {
     this.router.navigate([CONFIG_PATH])
   }
 
-  onClickAddTransaction(receiptIndex: number) {
-    this.receiptsService.addTransaction(receiptIndex)
+  onClickAddTransaction(receiptUuid: string) {
+    this.receiptsService.addTransaction(receiptUuid)
   }
 
-  onClickRemoveTransaction(receiptIndex: number,
+  onClickRemoveTransaction(receiptUuid: string,
                            transactionUuid: string) {
     this.receiptsService.removeTransaction(
-      receiptIndex,
+      receiptUuid,
       transactionUuid
     )
   }
@@ -88,6 +88,6 @@ export class InputComponent implements OnInit, OnDestroy {
   }
 
   get receipts(): Receipt[] {
-    return this.receiptsService.items
+    return this.receiptsService.items.toArray()
   }
 }

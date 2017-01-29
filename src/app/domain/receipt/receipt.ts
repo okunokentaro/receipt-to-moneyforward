@@ -18,7 +18,22 @@ export class Receipt {
     this.total        = null
   }
 
+  addTransaction() {
+    const newTransaction = Object.assign({}, this.getLastTransaction())
+
+    newTransaction.uuid    = uuidGen()
+    newTransaction.content = ''
+    newTransaction.amount  = 0
+
+    this.transactions.push(newTransaction)
+  }
+
   removeTransaction(uuid: string) {
     this.transactions = this.transactions.filter(t => t.uuid !== uuid)
+  }
+
+  private getLastTransaction(): Transaction {
+    const idx = this.transactions.length - 1
+    return this.transactions[idx]
   }
 }
