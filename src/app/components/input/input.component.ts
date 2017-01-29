@@ -30,9 +30,11 @@ export class InputComponent implements OnInit, OnDestroy {
   constructor(public receiptsService: ReceiptsService,
               public configService: ConfigService,
               public router: Router) {
-    this.subscriptions.push(this.receiptsService.changed.subscribe(() => {
-      rerenderSemanticUi()
-    }))
+    this.subscriptions.push(
+      this.receiptsService.changed.subscribe(() => {
+        rerenderSemanticUi()
+      })
+    )
   }
 
   ngOnInit() {
@@ -40,7 +42,7 @@ export class InputComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach((s) => s.unsubscribe())
+    this.subscriptions.forEach(s => s.unsubscribe())
   }
 
   onClickNew() {
@@ -55,8 +57,12 @@ export class InputComponent implements OnInit, OnDestroy {
     this.receiptsService.addTransaction(receiptIndex)
   }
 
-  onClickRemoveTransaction(receiptIndex: number, transactionUuid: string) {
-    this.receiptsService.removeTransaction(receiptIndex, transactionUuid)
+  onClickRemoveTransaction(receiptIndex: number,
+                           transactionUuid: string) {
+    this.receiptsService.removeTransaction(
+      receiptIndex,
+      transactionUuid
+    )
   }
 
   onClickExportCsv() {

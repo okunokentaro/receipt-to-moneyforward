@@ -1,25 +1,5 @@
-import {uuidGen} from "../../uuid-gen";
-
-export interface Transaction {
-  uuid         : string
-  lCatIndex    : number
-  mCatIndex    : number
-  content      : string
-  amount       : number
-  isTaxIncluded: boolean
-  amountFixed? : number
-}
-
-const defaultTransactions = (): Transaction => {
-  return {
-    uuid         : uuidGen(),
-    lCatIndex    : 0,
-    mCatIndex    : 0,
-    content      : '',
-    amount       : 0,
-    isTaxIncluded: true
-  }
-}
+import {uuidGen} from '../../uuid-gen'
+import {Transaction} from '../transaction/transaction'
 
 export class Receipt {
   uuid        : string
@@ -32,7 +12,7 @@ export class Receipt {
   constructor() {
     this.uuid         = uuidGen()
     this.date         = new Date()
-    this.transactions = [defaultTransactions()]
+    this.transactions = [new Transaction()]
     this.place        = ''
     this.account      = ''
     this.total        = null
