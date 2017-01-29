@@ -55,6 +55,10 @@ export class InputComponent implements OnInit, OnDestroy {
     this.receiptsService.addTransaction(receiptIndex)
   }
 
+  onClickRemoveTransaction(receiptIndex: number, transactionUuid: string) {
+    this.receiptsService.removeTransaction(receiptIndex, transactionUuid)
+  }
+
   onClickExportCsv() {
     const csv = this.receiptsService.convertToCsv()
 

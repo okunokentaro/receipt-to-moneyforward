@@ -60,21 +60,31 @@
       </div>
     </div>
 
-    <div class="row" *ngFor="let transaction of receipt.transactions;">
+    <div class="row" *ngFor="let transaction of receipt.transactions">
       <div class="sixteen wide column">
         <form class="ui form">
           <div class="fields">
             <div class="one wide field">
-              <button class="ui icon circular button" (click)="onClickAddTransaction(receiptIndex)">
+              <button
+                class="ui icon circular button"
+                (click)="onClickAddTransaction(receiptIndex)"
+              >
                 <i class="plus icon"></i>
+              </button>
+              <button
+                class="ui icon circular button"
+                (click)="onClickRemoveTransaction(receiptIndex, transaction.uuid)"
+              >
+                <i class="minus icon"></i>
               </button>
             </div>
             <div class="three wide field">
               <select
                 class="ui dropdown"
                 title="largeCategory"
+                name ="largeCategory"
                 [(ngModel)]="transaction.lCatIndex"
-              >
+              ><!-- the attribute name is for ngModel -->
                 <option value="">大項目</option>
                 <option
                   *ngFor="let largeCategory of largeCategories; let i = index"
@@ -86,8 +96,9 @@
               <select
                 class="ui dropdown"
                 title="middleCategory"
+                name ="middleCategory"
                 [(ngModel)]="transaction.mCatIndex"
-              >
+              ><!-- the attribute name is for ngModel -->
                 <option value="">中項目</option>
                 <option
                   *ngFor="let middleCategory of getMiddleCategories(transaction.lCatIndex); let i = index"
