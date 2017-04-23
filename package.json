@@ -1,18 +1,7 @@
 {
   "name": "receipt-to-moneyforward",
   "version": "0.0.0",
-  "license": "MIT",
   "angular-cli": {},
-  "scripts": {
-    "start": "ng serve",
-    "lint": "tslint \"src/**/*.ts\"",
-    "test": "ng test",
-    "pree2e": "webdriver-manager update",
-    "e2e": "protractor",
-    "installSemantic": "cd ./node_modules/semantic-ui && npm run install",
-    "buildSemantic": "cd ./semantic && gulp build && ln -s ../semantic/dist/semantic.css ./src/semantic.css && ln -s ../semantic/dist/themes ./src/themes && ln -s ../semantic/dist/semantic.js ./src/semantic.js"
-  },
-  "private": true,
   "dependencies": {
     "@angular/common": "2.4.5",
     "@angular/compiler": "2.4.5",
@@ -54,5 +43,16 @@
     "tslint": "^4.0.2",
     "typescript": "~2.0.3",
     "webdriver-manager": "10.2.5"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "buildSemantic": "cd ./semantic && gulp build && ln -s ../semantic/dist/semantic.css ./src/semantic.css && ln -s ../semantic/dist/themes ./src/themes && ln -s ../semantic/dist/semantic.js ./src/semantic.js",
+    "e2e": "protractor",
+    "installSemantic": "cd ./node_modules/semantic-ui && npm run install",
+    "lint": "tslint \"src/**/*.ts\"",
+    "pree2e": "webdriver-manager update",
+    "start": "ng serve",
+    "test": "ng test"
   }
 }
