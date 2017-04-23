@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core'
+import { Injectable } from '@angular/core'
 
 export interface LargeCategory {
   name: string
-  middleCategories: Array<{name: string}>
+  middleCategories: Array<{ name: string }>
 }
 
 interface ConfigData {
@@ -19,13 +19,13 @@ export class ConfigService {
   localStorage: Storage
 
   constructor() {
-    this.localStorage = window.localStorage
+    this.localStorage    = window.localStorage
     this.largeCategories = this.getConfig().largeCategories
   }
 
   addLargeCategory() {
     this.largeCategories.push({
-      name: '',
+      name:             '',
       middleCategories: [{name: ''}],
     })
 

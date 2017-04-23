@@ -1,22 +1,24 @@
 import * as jQuery from 'jquery'
-import {Component, OnInit, OnDestroy} from '@angular/core'
-import {Router} from '@angular/router'
-import {Subscription} from 'rxjs/Subscription'
+import { Component, OnInit, OnDestroy } from '@angular/core'
+import { Router } from '@angular/router'
+import { Subscription } from 'rxjs/Subscription'
 
-import {CONFIG_PATH} from '../../constants'
-import {ReceiptsService} from '../../application/receipt/receipts.service'
-import {ConfigService} from '../../application/config/config.service'
-import {Receipt} from '../../domain/receipt/receipt'
+import { CONFIG_PATH } from '../../constants'
+import { ReceiptsService } from '../../application/receipt/receipts.service'
+import { ConfigService } from '../../application/config/config.service'
+import { Receipt } from '../../domain/receipt/receipt'
 
-const rerenderDropdown = () => {
+const renderDropdown = () => {
   requestAnimationFrame(() => (<any>jQuery('.ui.dropdown')).dropdown())
 }
-const rerenderCheckbox = () => {
+
+const renderCheckbox = () => {
   requestAnimationFrame(() => (<any>jQuery('.ui.checkbox')).checkbox())
 }
-const rerenderSemanticUi = () => {
-  rerenderDropdown()
-  rerenderCheckbox()
+
+const renderSemanticUi = () => {
+  renderDropdown()
+  renderCheckbox()
 }
 
 @Component({
@@ -35,13 +37,13 @@ export class InputComponent implements OnInit, OnDestroy {
   ) {
     this.subscriptions.push(
       this.receiptsService.changed.subscribe(() => {
-        rerenderSemanticUi()
+        renderSemanticUi()
       })
     )
   }
 
   ngOnInit() {
-    rerenderSemanticUi()
+    renderSemanticUi()
   }
 
   ngOnDestroy() {

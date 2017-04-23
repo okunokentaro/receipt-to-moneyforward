@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core'
-import {Subject} from 'rxjs/Subject'
+import { Injectable } from '@angular/core'
+import { Subject } from 'rxjs/Subject'
 
-import {convertToCsv} from './convert-to-csv'
-import {ConfigService} from '../config/config.service'
+import { convertToCsv } from './convert-to-csv'
+import { ConfigService } from '../config/config.service'
 
-import {Receipts} from '../../domain/receipt/receipts'
+import { Receipts } from '../../domain/receipt/receipts'
 
 @Injectable()
 export class ReceiptsService {

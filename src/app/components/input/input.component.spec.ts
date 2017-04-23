@@ -1,16 +1,12 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing'
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 import { NO_ERRORS_SCHEMA } from '@angular/core'
+import { RouterTestingModule } from '@angular/router/testing'
 
-import {InputComponent} from './input.component'
-import {ReceiptsService} from '../../application/receipt/receipts.service'
-import {ConfigService} from '../../application/config/config.service'
-import { Router } from '@angular/router'
+import { InputComponent } from './input.component'
+import { ReceiptsService } from '../../application/receipt/receipts.service'
+import { ConfigService } from '../../application/config/config.service'
 
-const RouterMock = {
-  navigate() {}
-}
-
-fdescribe('InputComponent', () => {
+describe('InputComponent', () => {
   let component: InputComponent
   let fixture: ComponentFixture<InputComponent>
 
@@ -19,19 +15,20 @@ fdescribe('InputComponent', () => {
       declarations: [
         InputComponent,
       ],
-      imports: [],
-      providers: [
-        {provide: ReceiptsService, useClass: ReceiptsService, deps: [ConfigService]},
-        ConfigService,
-        {provide: Router, useValue: RouterMock}
+      imports:      [
+        RouterTestingModule,
       ],
-      schemas: [NO_ERRORS_SCHEMA]
+      providers:    [
+        ReceiptsService,
+        ConfigService,
+      ],
+      schemas:      [NO_ERRORS_SCHEMA]
     })
-    .compileComponents()
+      .compileComponents()
   }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InputComponent)
+    fixture   = TestBed.createComponent(InputComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

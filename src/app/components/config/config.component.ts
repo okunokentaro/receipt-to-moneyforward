@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core'
-import {Router} from '@angular/router'
+import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
 
-import {ConfigService} from '../../application/config/config.service'
+import { ConfigService } from '../../application/config/config.service'
 
 @Component({
-  selector: 'app-config',
+  selector:    'app-config',
   templateUrl: './config.component.html',
-  styleUrls: ['./config.component.css']
+  styleUrls:   ['./config.component.css']
 })
 export class ConfigComponent implements OnInit {
 
