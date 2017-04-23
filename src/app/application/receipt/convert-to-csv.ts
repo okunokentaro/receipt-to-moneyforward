@@ -1,13 +1,15 @@
 import * as Papa from 'papaparse'
 
-import {Receipt} from '../../domain/receipt/receipt'
-import {LargeCategory} from '../config/config.service'
+import { Receipt } from '../../domain/receipt/receipt'
+import { LargeCategory } from '../config/config.service'
+
+declare const require: any
 const leftpad = require('left-pad')
 
 const getMfDate = (date: Date) => {
   const yyyy = date.getFullYear()
   const mm   = leftpad(date.getMonth() + 1, 2, '0')
-  const dd   = leftpad(date.getDate(),      2, '0')
+  const dd   = leftpad(date.getDate(), 2, '0')
   return [yyyy, mm, dd].join('/')
 }
 
@@ -31,8 +33,8 @@ export const convertToCsv = (receipts: Receipt[], categories: LargeCategory[]): 
   })
 
   return Papa.unparse(allTransactions, {
-    quotes   : true,
+    quotes:    true,
     delimiter: ',',
-    newline  : '\r\n'
+    newline:   '\r\n'
   })
 }

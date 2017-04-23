@@ -1,12 +1,10 @@
-/* tslint:disable:no-unused-variable */
-import {async, ComponentFixture, TestBed} from '@angular/core/testing'
-import {By} from '@angular/platform-browser'
-import {DebugElement} from '@angular/core'
-import {FormsModule} from '@angular/forms'
-import {RouterTestingModule} from '@angular/router/testing'
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
+import { FormsModule } from '@angular/forms'
+import { RouterTestingModule } from '@angular/router/testing'
+import { NO_ERRORS_SCHEMA } from '@angular/core'
 
-import {ConfigComponent} from './config.component'
-import {ConfigService} from '../../application/config/config.service'
+import { ConfigComponent } from './config.component'
+import { ConfigService } from '../../application/config/config.service'
 
 describe('ConfigComponent', () => {
   let component: ConfigComponent
@@ -17,19 +15,20 @@ describe('ConfigComponent', () => {
       declarations: [
         ConfigComponent,
       ],
-      imports: [
+      imports:      [
         FormsModule,
         RouterTestingModule,
       ],
-      providers: [
+      providers:    [
         ConfigService,
-      ]
+      ],
+      schemas:      [NO_ERRORS_SCHEMA],
     })
-    .compileComponents()
+      .compileComponents()
   }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ConfigComponent)
+    fixture   = TestBed.createComponent(ConfigComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

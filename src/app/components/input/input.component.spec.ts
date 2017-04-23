@@ -1,13 +1,10 @@
-/* tslint:disable:no-unused-variable */
-import {async, ComponentFixture, TestBed} from '@angular/core/testing'
-import {By} from '@angular/platform-browser'
-import {DebugElement} from '@angular/core'
-import {FormsModule} from '@angular/forms'
-import {RouterTestingModule} from '@angular/router/testing'
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
+import { NO_ERRORS_SCHEMA } from '@angular/core'
+import { RouterTestingModule } from '@angular/router/testing'
 
-import {InputComponent} from './input.component'
-import {ReceiptsService} from '../../application/receipt/receipts.service'
-import {ConfigService} from '../../application/config/config.service'
+import { InputComponent } from './input.component'
+import { ReceiptsService } from '../../application/receipt/receipts.service'
+import { ConfigService } from '../../application/config/config.service'
 
 describe('InputComponent', () => {
   let component: InputComponent
@@ -18,20 +15,20 @@ describe('InputComponent', () => {
       declarations: [
         InputComponent,
       ],
-      imports: [
-        FormsModule,
+      imports:      [
         RouterTestingModule,
       ],
-      providers: [
+      providers:    [
         ReceiptsService,
         ConfigService,
-      ]
+      ],
+      schemas:      [NO_ERRORS_SCHEMA]
     })
-    .compileComponents()
+      .compileComponents()
   }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InputComponent)
+    fixture   = TestBed.createComponent(InputComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

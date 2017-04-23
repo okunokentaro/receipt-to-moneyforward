@@ -1,8 +1,9 @@
 import {Receipt} from './receipt'
-import {calcTotalIncludingTax} from '../../application/receipt/calc-total-including-tax';
-import {TAX_RATE} from '../../constants';
+import {calcTotalIncludingTax} from '../../application/receipt/calc-total-including-tax'
+import {TAX_RATE} from '../../constants'
 
 export class Receipts {
+
   constructor(private items: Receipt[]) {}
 
   toArray(): Receipt[] {
@@ -32,4 +33,5 @@ export class Receipts {
   private getReceipt(uuid: string): Receipt {
     return this.items.find(v => v.uuid === uuid)
   }
+
 }

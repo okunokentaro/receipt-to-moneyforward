@@ -1,4 +1,4 @@
-import {Receipt} from '../../domain/receipt/receipt'
+import { Receipt } from '../../domain/receipt/receipt'
 
 export const calcTotalIncludingTax = (receipt: Receipt, taxRate: number): Receipt => {
   const transactionsIncludingTax = receipt.transactions.reduce((acc, transaction) => {
@@ -7,9 +7,9 @@ export const calcTotalIncludingTax = (receipt: Receipt, taxRate: number): Receip
       : transaction.amount * taxRate
 
     const obj = {
-      sortNumber   : acc.currentSortNumber,
+      sortNumber:    acc.currentSortNumber,
       amountFloored: void 0 as number,
-      amountFixed  : void 0 as number,
+      amountFixed:   void 0 as number,
       amountIncludingTax
     }
 
@@ -20,12 +20,13 @@ export const calcTotalIncludingTax = (receipt: Receipt, taxRate: number): Receip
     return acc
   }, {
     currentSortNumber: 0,
-    returnArray: []
+    returnArray:       []
   }).returnArray
 
   const totalIncludingTax = transactionsIncludingTax.reduce((acc, transaction) => {
     return acc + transaction.amountFloored
   }, 0)
+
   const diff = receipt.total - totalIncludingTax
 
   const sorted = transactionsIncludingTax.sort((a, b) => {
@@ -43,7 +44,7 @@ export const calcTotalIncludingTax = (receipt: Receipt, taxRate: number): Receip
     acc.returnArray.push(transaction)
     return acc
   }, {
-    remainDiff: diff,
+    remainDiff:  diff,
     returnArray: []
   }).returnArray.sort((a, b) => {
     return a.sortNumber - b.sortNumber
