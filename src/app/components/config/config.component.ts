@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core'
 import {Router} from '@angular/router'
+
 import {ConfigService} from '../../application/config/config.service'
 
 @Component({
@@ -8,8 +9,12 @@ import {ConfigService} from '../../application/config/config.service'
   styleUrls: ['./config.component.css']
 })
 export class ConfigComponent implements OnInit {
-  constructor(public configService: ConfigService,
-              public router: Router) {
+
+  constructor(
+    public configService: ConfigService,
+    public router: Router,
+  ) {
+    //
   }
 
   ngOnInit() {
@@ -42,4 +47,5 @@ export class ConfigComponent implements OnInit {
   get largeCategories() {
     return this.configService.largeCategories
   }
+
 }

@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core'
 
-export type LargeCategory = {
-  name: string,
+export interface LargeCategory {
+  name: string
   middleCategories: Array<{name: string}>
 }
 
-type ConfigData = {
-  largeCategories: LargeCategory[],
+interface ConfigData {
+  largeCategories: LargeCategory[]
   version?: number
 }
 
@@ -14,6 +14,7 @@ const CONFIG_KEY = 'ReceiptToMoneyforward-Config'
 
 @Injectable()
 export class ConfigService {
+
   largeCategories: LargeCategory[] = []
   localStorage: Storage
 
@@ -86,4 +87,5 @@ export class ConfigService {
     })
     this.localStorage.setItem(CONFIG_KEY, json)
   }
+
 }

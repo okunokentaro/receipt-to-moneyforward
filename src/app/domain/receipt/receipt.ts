@@ -2,12 +2,13 @@ import {uuidGen} from '../../uuid-gen'
 import {Transaction} from '../transaction/transaction'
 
 export class Receipt {
-  uuid        : string
-  date        : Date
+
+  uuid:         string
+  date:         Date
   transactions: Transaction[]
-  place       : string
-  account     : string
-  total       : number | null
+  place:        string
+  account:      string
+  total:        number | null
 
   constructor() {
     this.uuid         = uuidGen()
@@ -36,4 +37,5 @@ export class Receipt {
     const idx = this.transactions.length - 1
     return this.transactions[idx]
   }
+
 }

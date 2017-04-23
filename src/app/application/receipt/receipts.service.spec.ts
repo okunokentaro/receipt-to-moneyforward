@@ -1,6 +1,5 @@
-/* tslint:disable:no-unused-variable */
+import {TestBed, inject} from '@angular/core/testing'
 
-import {TestBed, async, inject} from '@angular/core/testing'
 import {ReceiptsService} from './receipts.service'
 import {ConfigService} from '../config/config.service'
 
@@ -8,7 +7,7 @@ describe('ReceiptsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        ReceiptsService,
+        {provide: ReceiptsService, useClass: ReceiptsService, deps: [ConfigService]},
         ConfigService,
       ]
     })

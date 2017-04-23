@@ -1,7 +1,7 @@
 import * as jQuery from 'jquery'
 import {Component, OnInit, OnDestroy} from '@angular/core'
 import {Router} from '@angular/router'
-import {Subscription} from 'rxjs'
+import {Subscription} from 'rxjs/Subscription'
 
 import {CONFIG_PATH} from '../../constants'
 import {ReceiptsService} from '../../application/receipt/receipts.service'
@@ -20,16 +20,19 @@ const rerenderSemanticUi = () => {
 }
 
 @Component({
-  selector: 'app-input',
+  selector:    'app-input',
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.css']
+  styleUrls:   ['./input.component.css']
 })
 export class InputComponent implements OnInit, OnDestroy {
+
   subscriptions = [] as Subscription[]
 
-  constructor(public receiptsService: ReceiptsService,
-              public configService: ConfigService,
-              public router: Router) {
+  constructor(
+    public receiptsService: ReceiptsService,
+    public configService:   ConfigService,
+    public router:          Router,
+  ) {
     this.subscriptions.push(
       this.receiptsService.changed.subscribe(() => {
         rerenderSemanticUi()
@@ -90,4 +93,5 @@ export class InputComponent implements OnInit, OnDestroy {
   get receipts(): Receipt[] {
     return this.receiptsService.items.toArray()
   }
+
 }

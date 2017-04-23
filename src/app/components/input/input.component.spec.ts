@@ -1,15 +1,16 @@
-/* tslint:disable:no-unused-variable */
 import {async, ComponentFixture, TestBed} from '@angular/core/testing'
-import {By} from '@angular/platform-browser'
-import {DebugElement} from '@angular/core'
-import {FormsModule} from '@angular/forms'
-import {RouterTestingModule} from '@angular/router/testing'
+import { NO_ERRORS_SCHEMA } from '@angular/core'
 
 import {InputComponent} from './input.component'
 import {ReceiptsService} from '../../application/receipt/receipts.service'
 import {ConfigService} from '../../application/config/config.service'
+import { Router } from '@angular/router'
 
-describe('InputComponent', () => {
+const RouterMock = {
+  navigate() {}
+}
+
+fdescribe('InputComponent', () => {
   let component: InputComponent
   let fixture: ComponentFixture<InputComponent>
 
@@ -18,14 +19,13 @@ describe('InputComponent', () => {
       declarations: [
         InputComponent,
       ],
-      imports: [
-        FormsModule,
-        RouterTestingModule,
-      ],
+      imports: [],
       providers: [
-        ReceiptsService,
+        {provide: ReceiptsService, useClass: ReceiptsService, deps: [ConfigService]},
         ConfigService,
-      ]
+        {provide: Router, useValue: RouterMock}
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents()
   }))

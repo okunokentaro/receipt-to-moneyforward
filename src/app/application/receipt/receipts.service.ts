@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core'
-import {Subject} from 'rxjs'
+import {Subject} from 'rxjs/Subject'
 
 import {convertToCsv} from './convert-to-csv'
 import {ConfigService} from '../config/config.service'
@@ -8,6 +8,7 @@ import {Receipts} from '../../domain/receipt/receipts'
 
 @Injectable()
 export class ReceiptsService {
+
   items: Receipts
   changed = new Subject()
 
@@ -37,4 +38,5 @@ export class ReceiptsService {
       this.configService.largeCategories
     )
   }
+
 }
