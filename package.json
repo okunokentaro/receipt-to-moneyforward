@@ -47,7 +47,8 @@
   "private": true,
   "scripts": {
     "build": "ng build",
-    "build:semantic": "cd ./semantic && gulp build && ln -s ../semantic/dist/semantic.css ./src/semantic.css && ln -s ../semantic/dist/themes ./src/themes && ln -s ../semantic/dist/semantic.js ./src/semantic.js",
+    "build:semantic": "cd ./semantic && gulp build",
+    "copy:semantic": "cp ./semantic/dist/semantic.css ./src/assets && cp -r ./semantic/dist/themes ./src/assets && cp ./semantic/dist/semantic.js ./src/assets",
     "e2e": "ng e2e",
     "install:semantic": "cd ./node_modules/semantic-ui && npm run install",
     "lint": "ng lint",

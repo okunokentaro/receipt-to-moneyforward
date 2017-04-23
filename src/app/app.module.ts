@@ -16,7 +16,7 @@ import { ConfigService } from './application/config/config.service'
 
 declare const require: any
 (<any>window).jQuery = jQuery
-require('../semantic.js')
+require('../assets/semantic.js')
 
 @NgModule({
   declarations: [
